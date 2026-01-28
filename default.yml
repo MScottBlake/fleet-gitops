@@ -26,6 +26,6 @@ org_settings:
     host_expiry_enabled: true
     host_expiry_window: 30
   webhook_settings:
-    activity_webhook:
+    activities_webhook:
       enable_activities_webhook: true
       destination_url: https://webhook.site/078a400a-474d-42f9-9924-fc5066587f6e
