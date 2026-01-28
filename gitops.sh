@@ -55,6 +55,7 @@ if [ "$FLEET_DRY_RUN_ONLY" = true ]; then
 fi
 
 # Real run
-if [ "$DRY_RUN_OUTPUT" == "*[!] gitops dry run succeeded*" ]; then
-  $FLEETCTL gitops "${args[@]}"
-fi
+$FLEETCTL gitops "${args[@]}"
+# if [ "$DRY_RUN_OUTPUT" == "*[!] gitops dry run succeeded*" ]; then
+#   $FLEETCTL gitops "${args[@]}"
+# fi
