@@ -14,9 +14,18 @@ org_settings:
   server_settings:
     server_url: $FLEET_URL
   org_info:
-    org_name: Fleet
+    org_name: Fleet GitOps Training
   secrets:
     - secret: "$FLEET_GLOBAL_ENROLL_SECRET"
   features:
     enable_host_users: true
     enable_software_inventory: true
+  fleet-desktop:
+    transparency_url: https://catoftheday.com
+  host_expiry_settings:
+    host_expiry_enabled: true
+    host_expiry_window: 30
+  webhook_settings:
+    activity_webhook:
+      enable_activities_webhook: true
+      destination_url: https://webhook.site/078a400a-474d-42f9-9924-fc5066587f6e
