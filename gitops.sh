@@ -49,12 +49,12 @@ if [ "$FLEET_DELETE_OTHER_TEAMS" = true ]; then
 fi
 
 # Dry run
-DRY_RUN=$($FLEETCTL gitops "${args[@]}" --dry-run)
+DRY_RUN_OUTPUT=$($FLEETCTL gitops "${args[@]}" --dry-run)
 if [ "$FLEET_DRY_RUN_ONLY" = true ]; then
   exit 0
 fi
 
 # Real run
-if [ "$DRY_RUN" == "*[!] gitops dry run succeeded*" ]; then
+if [ "$DRY_RUN_OUTPUT" == "*[!] gitops dry run succeeded*" ]; then
   $FLEETCTL gitops "${args[@]}"
 fi
