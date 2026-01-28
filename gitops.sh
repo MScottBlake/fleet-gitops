@@ -21,9 +21,9 @@ else
 	FLEET_DELETE_OTHER_TEAMS=false
 fi
 
-# Copy/pasting raw SSO metadata into GitHub secrets will result in malformed yaml. 
+# Copy/pasting raw SSO metadata into GitHub secrets will result in malformed yaml.
 # Adds spaces to all but the first line of metadata keeps the  multiline string in bounds.
-# See README for more information 
+# See README for more information
 
 # FLEET_SSO_METADATA=$( sed '2,$s/^/      /' <<<  "${FLEET_MDM_SSO_METADATA}")
 # FLEET_MDM_SSO_METADATA=$( sed '2,$s/^/        /' <<<  "${FLEET_MDM_SSO_METADATA}")
@@ -49,10 +49,12 @@ if [ "$FLEET_DELETE_OTHER_TEAMS" = true ]; then
 fi
 
 # Dry run
-$FLEETCTL gitops "${args[@]}" --dry-run
+DRY_RUN=$($FLEETCTL gitops "${args[@]}" --dry-run)
 if [ "$FLEET_DRY_RUN_ONLY" = true ]; then
   exit 0
 fi
 
 # Real run
-$FLEETCTL gitops "${args[@]}"
+if [ "$DRY_RUN" == "*[!] gitops dry run succeeded*" ]; then
+  $FLEETCTL gitops "${args[@]}"
+fi
